@@ -28,6 +28,7 @@ async function generarQR(param) {
 
 router.get("/", async (req, res) => {
     try {
+        console.log('Ingreso a solicitar')
         const fila = await obtenerDatos(spreadsheetId, "GeneradorQR!C6:C");
 
         console.log(fila);
