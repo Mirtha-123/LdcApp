@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-const { google } = require("googleapis");
 
 const routes = require('./routes/index');
 
