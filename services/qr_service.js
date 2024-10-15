@@ -4,6 +4,8 @@ const { obtenerCliente } = require('./auth');
 
 async function obtenerDatos(spreadsheetId, range) {
     const client = await obtenerCliente();
+    console.log('Obtuvimos cliente')
+    console.log(client)
     const googleSheets = google.sheets({ version: "v4", auth: client });
 
     const getRow = await googleSheets.spreadsheets.values.get({
