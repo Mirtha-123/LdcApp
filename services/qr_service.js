@@ -3,18 +3,22 @@ const { google } = require('googleapis');
 const { obtenerCliente } = require('./auth');
 
 async function obtenerDatos(spreadsheetId, range) {
-    const client = await obtenerCliente();
-    console.log('Obtuvimos cliente')
-    console.log(client)
-    const googleSheets = google.sheets({ version: "v4", auth: client });
+    try {
+        const client = await obtenerCliente();
+        console.log('Obtuvimos cliente');
+        console.log(client);
+        const googleSheets = google.sheets({ version: "v4", auth: client });
 
-    const getRow = await googleSheets.spreadsheets.values.get({
-        auth: client,
-        spreadsheetId,
-        range,
-    });
+        const getRow = await googleSheets.spreadsheets.values.get({
+            spreadsheetId,
+            range,
+        });
 
-    return getRow.data.values;
+        return getRow.data.values;
+    } catch (error) {
+        console.error('Error al obtener datos Conexion:', error);
+        throw error;
+    }
 }
 
 async function agregarDatos(spreadsheetId, range, values) {
