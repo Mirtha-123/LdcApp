@@ -4,7 +4,7 @@ const { google } = require('googleapis');
 async function obtenerCliente() {
     try {
         const auth = new google.auth.GoogleAuth({
-            keyFile: "./credential.json", // Ajusta la ruta si es necesario
+            keyFile: "credential.json", // Ajusta la ruta si es necesario
             scopes: "https://www.googleapis.com/auth/spreadsheets",
         });
         return await auth.getClient();
